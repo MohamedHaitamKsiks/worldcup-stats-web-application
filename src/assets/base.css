@@ -1,4 +1,14 @@
 
 body {
+    margin: 0px;
+    padding: 0px;
 
+    font-family: Play;
+
+    background-color: #00242C;
+    color:white;
+}
+
+input {
+    font-family: Play;
 }
