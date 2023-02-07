@@ -40,35 +40,21 @@
                 </tr>
             </table>
 
+            <!--8eme finale-->
+            <h1 class="match-type"> 8eme de Finale </h1>
+            <table class="match-table">
+                <tr class="match-table-line" v-for="i in 4">
+                    <Match />
+                    <Match />
+                </tr>
+            </table>
+
         </div>
     </section>
 </template>
 
 
 <style scoped>
-    .main-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        height: 1600px;
-    }
-
-    .main {
-        
-        padding-top: 80px;
-        width: 100%;
-        max-width: 1200px;
-        height: 100%;
-        background-color: #1E383E;
-
-
-    }
-
-    .title {
-        font-size: xx-large;
-        font-weight: normal;
-        margin: 16px;
-    }
 
     .match-type {
         background-color: #00242C;
@@ -81,7 +67,7 @@
         border-collapse: collapse;
     }
 
-    .match-table .match-container:first-child {
+    .match-table .match-container {
         border-right: 1px solid white;
     }
 
@@ -89,7 +75,7 @@
         border-right: none;
     }
 
-    .match-table .match-table-line:first-child {
+    .match-table .match-table-line{
         border-bottom: 1px solid white;
     }
 

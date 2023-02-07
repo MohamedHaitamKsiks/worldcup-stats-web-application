@@ -12,8 +12,8 @@ import Navlink from './Navlink.vue';
 
         <div class="navlink-list">
             <Navlink to="/"> Matches </Navlink>
-            <Navlink to="/equipes"> Equipes </Navlink>
             <Navlink to="/joueurs"> Joueurs </Navlink>
+            <Navlink to="/elimination"> Elimination </Navlink>
             <Navlink to="/classement"> Classement </Navlink>
         </div>
     </div>

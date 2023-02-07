@@ -48,6 +48,8 @@
         display: flex;
         flex-direction: column;
         height: 100%;
+
+        
     }
 
 
@@ -62,6 +64,9 @@
         padding: 8px;
         flex: auto;
         text-align: center;
+
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .navlink-active {
