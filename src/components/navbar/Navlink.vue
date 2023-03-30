@@ -14,8 +14,8 @@
 <script>
     export default {
         props: {
-            "value": String,
-            "to": String
+            "to": String,
+            "name": String
         },
         data() {
             return {
@@ -35,7 +35,7 @@
         },
         computed: {
             active() {
-                return this.$route.path == this.to
+                return this.$route.name == this.name
             }
         }
         

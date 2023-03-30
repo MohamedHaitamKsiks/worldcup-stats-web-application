@@ -1,25 +1,21 @@
+<script setup>
+    import axios from 'axios'
+</script>
 
 <template>
-    <div class="match-bracket-container">
+    <div class="match-bracket-container" @click="$router.push(`/match/${match.id}`)">
 
         <div class="match-bracket-flex">
 
             <div class="match-bracket-date">
-                Dec 12
+               {{ match.date }} 
             </div>
 
             <div class="match-bracket-equipe-container">
-                <!--team 1-->
-                <div class="match-bracket-equipe"> 
-                    <img class="equipe-bracket-image" src="images/equipes/mar.png"/>
-                    <div class="equipe-bracket-name"> Morocco </div>
-                    <div class="equipe-bracket-score"> 3 </div>
-                </div>
-                <!--team 2-->
-                <div class="match-bracket-equipe"> 
-                    <img class="equipe-bracket-image" src="images/equipes/mar.png"/>
-                    <div class="equipe-bracket-name"> Morocco </div>
-                    <div class="equipe-bracket-score"> 3 </div>
+                <div class="match-bracket-equipe" v-for="equipe in match.equipes"> 
+                    <img class="equipe-bracket-image" :src="`${equipe.image}`"/>
+                    <div class="equipe-bracket-name"> {{ equipe.nom }} </div>
+                    <div class="equipe-bracket-score"> {{ equipe.but }} </div>
                 </div>
             </div>
 
@@ -31,9 +27,48 @@
 
 </template>
 
+
 <script>
     export default {
-        
+        props: {
+            "matchid": Number
+        },
+        data() {
+            return {
+                //match
+                match: {
+                    id: 0,
+                    date: "",
+                    stade: "",
+                    equipes: []
+                }
+            }
+        },
+        methods: {
+            
+        },
+        async mounted() {
+            this.match.id = this.matchid
+            let response = await axios.get(`https://apex.oracle.com/pls/apex/projet_si/match/${this.matchid}`)
+            let match = response.data
+            console.log(match);
+            this.match.stade = match.stade;
+            this.match.date = match.date_match;
+            
+            response = await axios.get(`https://apex.oracle.com/pls/apex/projet_si/equipe/match/${this.matchid}`)
+            let equipes = response.data.items
+            equipes.forEach(async (equipe) => {
+                response = await axios.get(`https://apex.oracle.com/pls/apex/projet_si/but/match/${this.matchid}/equipe/${equipe.id}`)
+                this.match.equipes.push({
+                    id: equipe.id,
+                    nom: equipe.nom,
+                    image: equipe.image,
+                    but: response.data.count
+                });
+            });
+
+        }
+
     }
 </script>
 

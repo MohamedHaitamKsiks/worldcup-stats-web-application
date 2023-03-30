@@ -1,5 +1,10 @@
+<script setup>
+    import axios from 'axios';
+</script>
+
+
 <template >
-    <h1 class="group-name"> Groupe A </h1>
+    <h1 class="group-name"> Groupe {{ groupe.nom }} </h1>
     <table class="group-table">
         <tr>
             <th style="text-align:left"> Equipe </th>
@@ -8,21 +13,41 @@
             <th> Matches </th>
         </tr>
 
-        <tr v-for="i in 4">
+        <tr v-for="equipe in equipes">
             <td class="group-team">
-                <img class="group-team-icon" src="images/equipes/mar.png"/> Maroc 
+                <img class="group-team-icon" :src="equipe.image"/> 
+                {{ equipe.nom }}
             </td>
-            <td> 7 </td>
-            <td> 3 </td>
+            <td> 0 </td>
+            <td> 0 </td>
             <td> 
-                <img class="group-match-icon" src="icons/match/draw.svg"/>
-                <img class="group-match-icon" src="icons/match/win.svg"/>  
-                <img class="group-match-icon" src="icons/match/win.svg"/>  
+                <img class="group-match-icon" src="/icons/match/draw.svg"/>
+                <img class="group-match-icon" src="/icons/match/draw.svg"/>  
+                <img class="group-match-icon" src="/icons/match/draw.svg"/>  
             </td>
         </tr>
     </table>
 
 </template>
+
+<script>
+
+    export default {
+        props: {
+            groupe: Object
+        },
+        data() {
+            return {
+                equipes: []
+            }
+        },
+        async mounted() {
+            let result = await axios.get(`https://apex.oracle.com/pls/apex/projet_si/equipe/groupe/${this.groupe.id}`);
+            this.equipes = result.data.items
+        }
+    }
+
+</script>
 
 
 <style scoped>

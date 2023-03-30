@@ -18,35 +18,79 @@
             <div class="bracket-container">
                 <!--8eme-->
                 <div class="bracket-phase">
-                    <div class="bracket-groupe-phase" v-for="i in 4">
-                        <MatchBracket v-for="i in 2"/>
+                    <div class="bracket-groupe-phase">
+                        <MatchBracket matchid="48"/>
+                        <MatchBracket matchid="49"/>
+                    </div>
+
+                    <div class="bracket-groupe-phase">
+                        <MatchBracket matchid="50"/>
+                        <MatchBracket matchid="51"/>
+                    </div>
+
+                    <div class="bracket-groupe-phase">
+                        <MatchBracket matchid="52"/>
+                        <MatchBracket matchid="53"/>
+                    </div>
+
+                    <div class="bracket-groupe-phase">
+                        <MatchBracket matchid="55"/>
+                        <MatchBracket matchid="54"/>
                     </div>
                 </div>
 
                 <!--4-->
                 <div class="bracket-phase">
-                    <MatchBracket v-for="i in 4"/>
+                    <MatchBracket matchid="57"/>
+                    <MatchBracket matchid="56"/>
+                    <MatchBracket matchid="59"/>
+                    <MatchBracket matchid="58"/>
                 </div>
 
                 <!--demifinal-->
                 <div class="bracket-phase">
-                    <MatchBracket v-for="i in 2"/>
+                    <MatchBracket matchid="60"/>
+                    <MatchBracket matchid="61"/>
                 </div>
 
                 <!--finale-->
                 <div class="bracket-phase">
-                    <MatchBracket v-for="i in 1"/>
+                    <MatchBracket matchid="63"/>
                 </div>
             </div>
 
             <div class="bracket-title"> 3eme place </div>
-            <MatchBracket style="margin: 32px"/>
+            <MatchBracket matchid="62" style="margin: 32px"/>
             
 
         </div>
     </section>
 </template>
 
+<script>
+    export default {
+        data() {
+            return {
+                match: {
+                    equipes: [
+                        {
+                            nom: "Maroc",
+                            icon: "mar.png",
+                            score: 3
+                        },
+                        {
+                            nom: "Maroc",
+                            icon: "mar.png",
+                            score: 3
+                        }
+                    ],
+                    date: "12 Dec",
+                    stade: "Stade X"
+                }
+            }
+        }
+    }
+</script>
 
 <style scoped>
     .bracket-container {

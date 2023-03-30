@@ -7,14 +7,15 @@ import Navlink from './Navlink.vue';
 <!--html-->
 <template>
     <div class="navbar">
-        <img src="icons/world_cup_qatar.png" class="navbar-icon"/>
+        <img src="/icons/world_cup_qatar.png" class="navbar-icon"/>
         <input type="search" class="navbar-search" placeholder="Recherche ..."/>
 
         <div class="navlink-list">
-            <Navlink to="/"> Matches </Navlink>
-            <Navlink to="/joueurs"> Joueurs </Navlink>
-            <Navlink to="/elimination"> Elimination </Navlink>
-            <Navlink to="/classement"> Classement </Navlink>
+            <Navlink to="/" name="home"> Matches </Navlink>
+            <Navlink to="/groupe" name="groupe"> Groupes </Navlink>
+            <Navlink to="/joueurs/1" name="joueurs"> Joueurs </Navlink>
+            <Navlink to="/elimination" name="elimination"> Elimination </Navlink>
+            <Navlink to="/classement" name="classement"> Classement </Navlink>
         </div>
     </div>
 </template>
@@ -26,6 +27,8 @@ import Navlink from './Navlink.vue';
         top: 0px;
         left: 0px;
         right: 0px;
+
+        z-index: 100;
 
         background-color: #9B0041;
         /*padding: 7px;*/
@@ -51,7 +54,7 @@ import Navlink from './Navlink.vue';
         font-size: x-large;
         padding: 7px;
         border-radius: 4px;
-        background-image: url("icons/search.png");
+        background-image: url("/icons/search.png");
         background-size: contain;
         background-repeat: no-repeat;
         padding-left: 48px;
